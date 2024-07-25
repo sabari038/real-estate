@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './RealEstateSignup.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
-import signup from './signup-image.jpg';
+import signup from '../images/signup-image.jpg';
 
 const RealEstateSignup = () => {
     const [name, setName] = useState('');

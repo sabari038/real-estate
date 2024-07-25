@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faTwitter, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import './RealEstateSignin.css';
-import signin from './signin-image.jpg';
+import signin from '../images/signin-image.jpg';
 
 const RealEstateSignin = () => {
     const [email, setEmail] = useState('');

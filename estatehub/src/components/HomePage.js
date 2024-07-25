@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './HomePage.css';
-import logo from './Estate-Hub.png';
+import logo from '../images/Estate-Hub.png';
 import RealEstateSignin from './RealEstateSignin';
 import RealEstateSignup from './RealEstateSignup';
 
