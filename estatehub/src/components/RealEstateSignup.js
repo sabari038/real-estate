@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './RealEstateSignup.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import './RealEstateSignup.css';
 import signup from '../images/signup-image.jpg';
 
-const RealEstateSignup = () => {
+const RealEstateSignup = ({ toggleSignin }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rePassword, setRePassword] = useState('');
     const [error, setError] = useState(null);
-    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -32,7 +30,7 @@ const RealEstateSignup = () => {
             if (response.ok) {
                 const user = await response.json();
                 console.log('User registered:', user);
-                navigate('/login');
+                // Handle successful registration
             } else {
                 setError('Registration failed');
             }
@@ -117,7 +115,10 @@ const RealEstateSignup = () => {
                 </div>
                 <div className="signup-image">
                     <figure><img src={signup} alt="sign up" /></figure>
-                    <a href="/login" className="signup-image-link">I am already a member</a>
+                    <a href="#" onClick={() => {
+                        toggleSignin();
+                        setError(null); // Reset error state
+                    }} className="signup-image-link">I am already a member</a>
                 </div>
             </div>
         </div>

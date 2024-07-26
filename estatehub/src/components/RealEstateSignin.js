@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faTwitter, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import './RealEstateSignin.css';
 import signin from '../images/signin-image.jpg';
 
-const RealEstateSignin = () => {
+const RealEstateSignin = ({ toggleSignup }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
-    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -21,15 +19,13 @@ const RealEstateSignin = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                
                 body: JSON.stringify({ email, password }),
             });
 
             if (response.ok) {
                 const user = await response.json();
                 console.log('User logged in:', user);
-                // Redirect to a different page upon successful login
-                navigate('/');
+                // Handle successful login
             } else {
                 setError('Invalid email or password');
             }
@@ -45,7 +41,10 @@ const RealEstateSignin = () => {
                 <div className="signup-content">
                     <div className="signup-image">
                         <figure><img src={signin} alt="sign up" /></figure>
-                        <a href="/signup" className="signup-image-link">Create an account</a>
+                        <a href="#" onClick={() => {
+                            toggleSignup();
+                            setError(null); // Reset error state
+                        }} className="signup-image-link">Create an account</a>
                     </div>
                     <div className="signup-form">
                         <h2 className="form-title">Sign in</h2>

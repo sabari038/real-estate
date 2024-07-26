@@ -8,8 +8,15 @@ const HomePage = () => {
     const [showSignin, setShowSignin] = useState(false);
     const [showSignup, setShowSignup] = useState(false);
 
-    const toggleSignin = () => setShowSignin(!showSignin);
-    const toggleSignup = () => setShowSignup(!showSignup);
+    const toggleSignin = () => {
+        setShowSignin(!showSignin);
+        setShowSignup(false); // Ensure sign-up popup is closed
+    };
+
+    const toggleSignup = () => {
+        setShowSignup(!showSignup);
+        setShowSignin(false); // Ensure sign-in popup is closed
+    };
 
     return (
         <div className="homepage">
@@ -40,7 +47,7 @@ const HomePage = () => {
                 <div className="popup">
                     <div className="popup-content">
                         <button className="close-btn" onClick={toggleSignin}>X</button>
-                        <RealEstateSignin />
+                        <RealEstateSignin toggleSignup={toggleSignup} />
                     </div>
                 </div>
             )}
@@ -50,7 +57,7 @@ const HomePage = () => {
                 <div className="popup">
                     <div className="popup-content">
                         <button className="close-btn" onClick={toggleSignup}>X</button>
-                        <RealEstateSignup />
+                        <RealEstateSignup toggleSignin={toggleSignin} />
                     </div>
                 </div>
             )}
